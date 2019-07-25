@@ -1,4 +1,3 @@
-add-GUI
 import random
 
 class AI():
@@ -39,4 +38,3 @@ class AI():
 
 #Use min-max algorithm for AI
 #Recursive
- master
