@@ -1,3 +1,4 @@
+add-GUI
 import random
 
 class AI():
@@ -35,3 +36,7 @@ class AI():
     def hard(self):
         pass
 
+
+#Use min-max algorithm for AI
+#Recursive
+ master
