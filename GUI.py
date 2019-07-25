@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import AI
-import board
+import time
 
 class MainApplication(tk.Frame):
     def __init__(self,parent):
@@ -13,6 +13,8 @@ class MainApplication(tk.Frame):
         self.p_turn = True
         self.last_p_turn = True #use to change who starts  first
         self.moves = [1,2,3,4,5,6,7,8,9] #Array of available moves in current game
+        self.x_moves = []
+        self.o_moves = []
 
         parent.title("Tic Tac Toe")
         self.difficulty.set(1)
@@ -84,29 +86,65 @@ class MainApplication(tk.Frame):
     def buttonClick(self, button):
         button.config(state="disabled")
 
-        if button == self.button1:
-            self.moves.remove(1)
-        elif button == self.button2:
-            self.moves.remove(2)
-        elif button == self.button3:
-            self.moves.remove(3)
-        elif button == self.button4:
-            self.moves.remove(4)
-        elif button == self.button5:
-            self.moves.remove(5)
-        elif button == self.button6:
-            self.moves.remove(6)
-        elif button == self.button7:
-            self.moves.remove(7)
-        elif button == self.button8:
-            self.moves.remove(8)
-        elif button == self.button9:
-            self.moves.remove(9)
-
         if self.p_turn:
             button["text"] = "X"
         else:
             button["text"] = "O"
+
+        if button == self.button1:
+            self.moves.remove(1)
+            if self.p_turn:
+                self.x_moves.append(1)
+            else:
+                self.o_moves.append(1)
+        elif button == self.button2:
+            self.moves.remove(2)
+            if self.p_turn:
+                self.x_moves.append(2)
+            else:
+                self.o_moves.append(2)
+        elif button == self.button3:
+            self.moves.remove(3)
+            if self.p_turn:
+                self.x_moves.append(3)
+            else:
+                self.o_moves.append(3)
+        elif button == self.button4:
+            self.moves.remove(4)
+            if self.p_turn:
+                self.x_moves.append(4)
+            else:
+                self.o_moves.append(4)
+        elif button == self.button5:
+            self.moves.remove(5)
+            if self.p_turn:
+                self.x_moves.append(5)
+            else:
+                self.o_moves.append(5)
+        elif button == self.button6:
+            self.moves.remove(6)
+            if self.p_turn:
+                self.x_moves.append(6)
+            else:
+                self.o_moves.append(6)
+        elif button == self.button7:
+            self.moves.remove(7)
+            if self.p_turn:
+                self.x_moves.append(7)
+            else:
+                self.o_moves.append(7)
+        elif button == self.button8:
+            self.moves.remove(8)
+            if self.p_turn:
+                self.x_moves.append(8)
+            else:
+                self.o_moves.append(8)
+        elif button == self.button9:
+            self.moves.remove(9)
+            if self.p_turn:
+                self.x_moves.append(9)
+            else:
+                self.o_moves.append(9)
 
         self.p_turn = not self.p_turn
         self.configTurn()
@@ -173,7 +211,7 @@ class MainApplication(tk.Frame):
 
     def computerMove(self):
         dif = int(self.difficulty.get())
-        comp_move = self.computer_AI.makeMove(dif,self.moves)
+        comp_move = self.computer_AI.makeMove(dif,self.moves, self.x_moves, self.o_moves)
         self.buttonClick(eval("self.button" + str(comp_move)))
 
     def reset(self):
@@ -195,4 +233,6 @@ class MainApplication(tk.Frame):
 
         self.configTurn()
         self.moves = [1,2,3,4,5,6,7,8,9]
+        self.x_moves = []
+        self.o_moves = []
         self.win = False
