@@ -1,7 +1,8 @@
 import board
-import sys
+from GUI import *
+import AI
 
-
+"""
 def main():
     game = board.board()
     p_win = 0
@@ -15,7 +16,10 @@ def main():
         new_game = input("Enter 'y' for new game\n")
         if new_game != 'y':
             break
+"""
 
 
-if __name__ =="__main__":
-    main()
+if __name__ == "__main__":
+    root = tk.Tk()
+    MainApplication(root)
+    root.mainloop()
