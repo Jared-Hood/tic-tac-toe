@@ -108,6 +108,10 @@ class AI():
 
     def branch_eval(self, branch, c_turn, depth):
 
+        result = self.checkwin(branch)
+        if result != 0:
+            return result
+
         # determine if tie
         count = 0
         for i in range(1, 10):
@@ -115,10 +119,6 @@ class AI():
                 count += 1
         if count == 0:
             return 0
-
-        result = self.checkwin(branch)
-        if result != 0:
-            return result
 
         return self.hard(not c_turn, branch, depth + 1)
 
